@@ -43,6 +43,7 @@ dataref = "12/08/2025"
 # 📊 Gráfico de valor de mercado
 st.subheader("💰 Curva de Juros")
 fig_valor = grafico_curva_juros(df)
+
 st.pyplot(fig_valor)
 
 caminho1 = r"https://raw.githubusercontent.com/CarlosLaud/Juros/refs/heads/main/dados/juros.csv"
@@ -73,3 +74,52 @@ def grafico_juros(df_juros):
 st.subheader("💰 Evolução taxa de Juros")
 fig = grafico_juros(df_juros)
 st.pyplot(fig)
+
+
+def grafico_curva_juros1(df):
+
+    import plotly.graph_objects as go
+
+    # Criando a figura
+    fig = go.Figure()
+
+    # Adicionando a linha
+
+    fig.add_trace(go.Scatter(x=df['Vcto'], y=df['CurvaFF252'], mode='lines', name='Juros',
+                            line=dict(color='blue', width=2)))
+
+    # Adicionando os pontos (scatter)
+    fig.add_trace(go.Scatter(x=df['Vcto'], y=df['Taxa'], mode='markers', name='Valor', marker=dict(size=8, color='red')))
+
+    fig.update_layout(
+        autosize=False,
+        width=1500,  # Define a largura do gráfico
+        height=600,  # Define a altura do gráfico
+        margin=dict(l=50, r=50, b=100, t=100, pad=4)
+    )
+
+    # Configurando o layout
+
+    fig.update_layout(
+        title={
+            'text': f"Evolução da Taxa Juros por prazo no dia {dataref}",
+            'x': 0.5,                  # centraliza (0 = esquerda, 1 = direita)
+            'xanchor': 'center',       # ancora o título ao centro
+            'font': {
+                'size': 24             # aumenta o tamanho da fonte
+            }
+        },
+        xaxis_title="Data",
+        yaxis_title="Juros"
+    )
+
+    fig.update_layout(
+        yaxis=dict(tickformat=".2%")  # Exibe os valores como percentagem
+    )
+    return fig
+
+# 📊 Gráfico de valor de mercado
+st.subheader("💰 Curva de Juros")
+fig_valor = grafico_curva_juros1(df)
+#st.plotly_chart(fig_valor)
+st.plotly_chart(fig_valor, use_container_width=True)
