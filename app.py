@@ -33,7 +33,7 @@ def grafico_curva_juros(df):
 
 
 # 🔄 Carregar dados
-#caminho = "https://raw.githubusercontent.com/CarlosLaud/dashboard-streamlit/refs/heads/main/Aula%204/df_novo.csv"
+
 caminho ="https://raw.githubusercontent.com/CarlosLaud/Juros/refs/heads/main/curva.csv"
 df = carregar_dados(caminho)
 
