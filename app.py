@@ -33,8 +33,8 @@ def grafico_curva_juros(df):
 
 
 # 🔄 Carregar dados
+caminho = r"https://raw.githubusercontent.com/CarlosLaud/Juros/refs/heads/main/dados/curva.csv"
 
-caminho ="https://raw.githubusercontent.com/CarlosLaud/Juros/refs/heads/main/curva.csv"
 df = carregar_dados(caminho)
 
 dataref = "12/08/2025"
@@ -45,7 +45,7 @@ st.subheader("💰 Curva de Juros")
 fig_valor = grafico_curva_juros(df)
 st.pyplot(fig_valor)
 
-caminho1 = "https://raw.githubusercontent.com/CarlosLaud/Juros/refs/heads/main/juros.csv"
+caminho1 = r"https://raw.githubusercontent.com/CarlosLaud/Juros/refs/heads/main/dados/juros.csv"
 
 df_juros = carregar_dados(caminho1)
 
